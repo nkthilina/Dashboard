@@ -9,13 +9,13 @@ onMounted(() => {
     initFlowbite();
 });
 const form = useForm({
-  name: null,
-  age: null,
-  image: null,
-})
+    name: null,
+    age: null,
+    image: null,
+});
 
 function submitTodo() {
-  form.post('/todos')
+    form.post("/todos");
 }
 </script>
 
@@ -29,28 +29,72 @@ function submitTodo() {
             </h2>
         </template>
 
+        <div class="w-full flex justify-end m-2 px-10">
+            <Link
+                :href="route('todos.index')"
+                class="group flex items-center gap-2 px-3 py-1.5 text-sm text-indigo-600 duration-150 bg-indigo-100 rounded-lg hover:bg-indigo-100"
+            >
+                <div
+                    class="inline-flex items-center justify-center w-7 h-7 mr-2 text-white transition-colors duration-150 bg-indigo-700 rounded-lg focus:shadow-outline group-hover:bg-indigo-800"
+                >
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke-width="1.5"
+                        stroke="currentColor"
+                        class="w-6 h-6"
+                    >
+                        <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            d="M9 15 3 9m0 0 6-6M3 9h12a6 6 0 0 1 0 12h-3"
+                        />
+                    </svg>
+                </div>
+                Back
+            </Link>
+        </div>
+
         <div class="py-12">
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
                 <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
                     <div
-                        class="flex items-center justify-between flex-column md:flex-row flex-wrap space-y-4 md:space-y-0 py-4 bg-white "
+                        class="flex items-center justify-between flex-column md:flex-row flex-wrap space-y-4 md:space-y-0 py-4 bg-white"
                     >
                         <div class="w-full flex justify-end m-2 px-10">
-                            <!-- <button
-                                class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-                            >
-                                <Link :href="route('todos.index')">Back</Link>
-                            </button> -->
-                            <a
+                            <Link
                                 :href="route('todos.index')"
-                                class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-                                >Back</a
+                                class="group flex items-center gap-2 px-3 py-1.5 text-sm text-indigo-600 duration-150 bg-indigo-100 rounded-lg hover:bg-indigo-100"
                             >
+                                <div
+                                    class="inline-flex items-center justify-center w-7 h-7 mr-2 text-white transition-colors duration-150 bg-indigo-700 rounded-lg focus:shadow-outline group-hover:bg-indigo-800"
+                                >
+                                    <svg
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        fill="none"
+                                        viewBox="0 0 24 24"
+                                        stroke-width="1.5"
+                                        stroke="currentColor"
+                                        class="w-6 h-6"
+                                    >
+                                        <path
+                                            stroke-linecap="round"
+                                            stroke-linejoin="round"
+                                            d="M9 15 3 9m0 0 6-6M3 9h12a6 6 0 0 1 0 12h-3"
+                                        />
+                                    </svg>
+                                </div>
+                                Back
+                            </Link>
                         </div>
 
                         <!-- form -->
 
-                        <form class="max-w-sm mx-auto" @submit.prevent="submitTodo">
+                        <form
+                            class="max-w-sm mx-auto"
+                            @submit.prevent="submitTodo"
+                        >
                             <div class="mb-5 py-2">
                                 <label
                                     for="text"
@@ -61,12 +105,11 @@ function submitTodo() {
                                     v-model="form.name"
                                     type="text"
                                     id="text"
-                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5  dark:border-gray-600 dark:placeholder-gray-400  dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                     placeholder=""
                                     required
                                 />
                             </div>
-
 
                             <div class="mb-5 py-2">
                                 <label
@@ -79,7 +122,7 @@ function submitTodo() {
                                     type="number"
                                     id="age"
                                     name="age"
-                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5  dark:border-gray-600 dark:placeholder-gray-400  dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                     required
                                 />
                             </div>
@@ -92,7 +135,7 @@ function submitTodo() {
                                 >
                                 <input
                                     @input="form.image = $event.target.files[0]"
-                                    class="p-2.5 block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-500 focus:outline-none  dark:border-gray-600 dark:placeholder-gray-400"
+                                    class="p-2.5 block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-500 focus:outline-none dark:border-gray-600 dark:placeholder-gray-400"
                                     aria-describedby="user_avatar_help"
                                     id="image"
                                     name="image"
@@ -105,13 +148,13 @@ function submitTodo() {
                                         id="remember"
                                         type="checkbox"
                                         value=""
-                                        class="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-blue-300  dark:border-gray-600 dark:focus:ring-blue-600 dark:ring-offset-gray-800"
+                                        class="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-blue-300 dark:border-gray-600 dark:focus:ring-blue-600 dark:ring-offset-gray-800"
                                         required
                                     />
                                 </div>
                                 <label
                                     for="remember"
-                                    class="ms-2 text-sm font-medium text-gray-900 "
+                                    class="ms-2 text-sm font-medium text-gray-900"
                                     >Remember me</label
                                 >
                             </div>
