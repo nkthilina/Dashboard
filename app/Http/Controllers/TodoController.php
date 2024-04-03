@@ -7,6 +7,8 @@ use App\Models\Todo;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
+use Inertia\Response;
+use Illuminate\Support\Facades\Storage;
 
 class TodoController extends Controller
 {
@@ -53,15 +55,44 @@ class TodoController extends Controller
     // }
 
     public function store(Request $request)
-{
-    $image = $request->file('image')->store('todos', 'public');
+    {
+        $image = $request->file('image')->store('todos', 'public');
 
-    Todo::create([
+        Todo::create([
         'name' => $request->input('name'),
         'age' => $request->input('age'),
         'image' => $image
-    ]);
+        ]);
 
-    return Redirect::route('todos.index');
-}
+        return Redirect::route('todos.index');
+    }
+
+    public function edit(Todo $todo){
+        return Inertia::render('Todos/Edit', [
+            'todo' => $todo,
+            'image' => asset('storage/' . $todo->image)
+        ]);
+    }
+
+    public function update(Todo $todo){
+        $image = $todo->image;
+        if(Request()->hasFile('image')){
+            Storage::delete('public/' .$todo->image);
+            $image = Request()->file('image')->store('todos', 'public');
+        }
+        $todo->update([
+            'name' => Request()->name,
+            'age' => Request()->age,
+            'image' => $image
+        ]);
+        return Redirect::route('todos.index');
+    }
+
+    public function destroy(Todo $todo){
+        Storage::delete('public/' .$todo->image);
+        $todo->delete();
+        return Redirect::route('todos.index');
+    }
+
+
 }

@@ -99,18 +99,50 @@ const props = defineProps({
                                     <!-- Modal toggle -->
                                     <Link
                                         :href="`/todos/${todo.id}/edit`"
-                                        type="button"
-                                        class="font-medium text-blue-600 dark:text-blue-500 hover:underline"
-                                        >Edit user</Link
+                                        class="flex items-center gap-2 px-3 py-1.5 text-sm text-indigo-600 duration-150 bg-indigo-50 rounded-lg hover:bg-indigo-100 active:bg-indigo-200 "
                                     >
+                                        <svg
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            viewBox="0 0 24 24"
+                                            fill="currentColor"
+                                            class="w-4 h-4"
+                                        >
+                                            <path
+                                                fillRule="evenodd"
+                                                d="M6.32 2.577a49.255 49.255 0 0111.36 0c1.497.174 2.57 1.46 2.57 2.93V21a.75.75 0 01-1.085.67L12 18.089l-7.165 3.583A.75.75 0 013.75 21V5.507c0-1.47 1.073-2.756 2.57-2.93z"
+                                                clipRule="evenodd"
+                                            />
+                                        </svg>
+                                        Edit
+                                    </Link>
                                     <Link
+                                        :href="`/todos/${todo.id}`"
+                                        method="delete"
+                                        class="flex items-center gap-2 px-3 py-1.5 text-sm text-indigo-600 duration-150 bg-indigo-50 rounded-lg hover:bg-indigo-100 active:bg-indigo-200 "
+                                    >
+                                        <svg
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            viewBox="0 0 24 24"
+                                            fill="currentColor"
+                                            class="w-4 h-4"
+                                        >
+                                            <path
+                                                fillRule="evenodd"
+                                                d="M6.32 2.577a49.255 49.255 0 0111.36 0c1.497.174 2.57 1.46 2.57 2.93V21a.75.75 0 01-1.085.67L12 18.089l-7.165 3.583A.75.75 0 013.75 21V5.507c0-1.47 1.073-2.756 2.57-2.93z"
+                                                clipRule="evenodd"
+                                            />
+                                        </svg>
+                                        Delete
+                                    </Link>
+
+                                    <!-- <Link
                                         :href="`/todos/${todo.id}/edit`"
                                         method="delete"
                                         as="button"
                                         type="button"
                                         class="font-medium text-blue-600 dark:text-blue-500 hover:underline"
                                         >Delete user</Link
-                                    >
+                                    > -->
                                     <a
                                         href="#"
                                         type="button"
@@ -119,9 +151,7 @@ const props = defineProps({
                                         class="font-medium text-blue-600 dark:text-blue-500 hover:underline"
                                         >Delete user</a
                                     >
-                                    <button @click="deleteTodo(todo.id)">
-                                        Delete
-                                    </button>
+
                                 </td>
                             </tr>
                         </tbody>

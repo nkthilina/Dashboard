@@ -3,20 +3,38 @@ import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout.vue";
 import { Head, Link, useForm } from "@inertiajs/vue3";
 import { onMounted } from "vue";
 import { initFlowbite } from "flowbite";
+import { Inertia } from "@inertiajs/inertia";
+//import { router } from '@inertiajs/vue3'
 
 // initialize components based on data attribute selectors
 onMounted(() => {
     initFlowbite();
 });
+
+const props = defineProps({
+    todo: Object,
+    image: String
+});
+
 const form = useForm({
-  name: null,
-  age: null,
+  name: props.name,
+  age: props.age,
   image: null,
 })
 
-function submitTodo() {
-  form.post('/todos')
-}
+// function updateTodo() {
+//   form.post('/todos')
+// }
+
+function updateTodo() {
+Inertia.post(`/todos/${props.todo.id}`, {
+  _method: 'put',
+  name: form.name,
+  age: form.age,
+  image: form.image
+})}
+
+
 </script>
 
 <template>
@@ -50,7 +68,7 @@ function submitTodo() {
 
                         <!-- form -->
 
-                        <form class="max-w-sm mx-auto" @submit.prevent="submitTodo">
+                        <form class="max-w-sm mx-auto" @submit.prevent="updateTodo">
                             <div class="mb-5 py-2">
                                 <label
                                     for="text"
@@ -90,6 +108,9 @@ function submitTodo() {
                                     for="user_avatar"
                                     >Upload file</label
                                 >
+                                <div>
+                                    <img :src="image" alt="image" class="w-32 h-32 pb-2" />
+                                </div>
                                 <input
                                     @input="form.image = $event.target.files[0]"
                                     class="p-2.5 block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-500 focus:outline-none  dark:border-gray-600 dark:placeholder-gray-400"
@@ -119,7 +140,7 @@ function submitTodo() {
                                 type="submit"
                                 class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
                             >
-                                Submit
+                                Update
                             </button>
                         </form>
 

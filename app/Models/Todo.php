@@ -14,5 +14,4 @@ class Todo extends Model
         'age',
         'image'
     ];
-
 }
