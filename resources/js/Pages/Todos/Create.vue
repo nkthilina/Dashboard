@@ -29,35 +29,8 @@ function submitTodo() {
             </h2>
         </template>
 
-        <div class="w-full flex justify-end m-2 px-10">
-            <Link
-                :href="route('todos.index')"
-                class="group flex items-center gap-2 px-3 py-1.5 text-sm text-indigo-600 duration-150 bg-indigo-100 rounded-lg hover:bg-indigo-100"
-            >
-                <div
-                    class="inline-flex items-center justify-center w-7 h-7 mr-2 text-white transition-colors duration-150 bg-indigo-700 rounded-lg focus:shadow-outline group-hover:bg-indigo-800"
-                >
-                    <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke-width="1.5"
-                        stroke="currentColor"
-                        class="w-6 h-6"
-                    >
-                        <path
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            d="M9 15 3 9m0 0 6-6M3 9h12a6 6 0 0 1 0 12h-3"
-                        />
-                    </svg>
-                </div>
-                Back
-            </Link>
-        </div>
-
-        <div class="py-12">
-            <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+        <div class="py-12 bg-stone-800">
+            <div class="max-w-lg mx-auto sm:px-6 lg:px-8">
                 <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
                     <div
                         class="flex items-center justify-between flex-column md:flex-row flex-wrap space-y-4 md:space-y-0 py-4 bg-white"

@@ -34,30 +34,10 @@ const props = defineProps({
                         class="flex items-center justify-between flex-column md:flex-row flex-wrap space-y-4 md:space-y-0 py-4 bg-white dark:bg-gray-400"
                     >
                         <div class="w-full flex justify-end m-2 px-10">
-                            <!-- <Link
-                                :href="route('todos.create')"
-                                class="flex items-center gap-2 px-3 py-1.5 text-sm text-indigo-600 duration-150 bg-indigo-50 rounded-lg hover:bg-indigo-100 active:bg-indigo-200"
-                            >
-                                <svg
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    fill="none"
-                                    viewBox="0 0 24 24"
-                                    stroke-width="1.5"
-                                    stroke="currentColor"
-                                    class="w-5 h-5"
-                                >
-                                    <path
-                                        stroke-linecap="round"
-                                        stroke-linejoin="round"
-                                        d="M12 4.5v15m7.5-7.5h-15"
-                                    />
-                                </svg>
-                                Add
-                            </Link> -->
+
                             <Link
                                 :href="route('todos.create')"
-                                class="group flex items-center gap-2 px-3 py-1.5 text-sm text-indigo-600 duration-150 bg-indigo-100 rounded-lg hover:bg-indigo-100"
-                            >
+                                class="group flex items-center gap-2 px-3 py-1.5 text-sm text-indigo-600 duration-150 bg-indigo-100 rounded-lg hover:bg-indigo-100">
                                 <div
                                     class="inline-flex items-center justify-center w-7 h-7 mr-2 text-white transition-colors duration-150 bg-indigo-700 rounded-lg focus:shadow-outline group-hover:bg-indigo-800"
                                 >
@@ -101,7 +81,10 @@ const props = defineProps({
                                 :key="todo.id"
                                 class="bg-white border-b dark:bg-gray-500 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600"
                             >
-                                <td class="w-4 p-4"></td>
+                                <td class="w-4 p-4">
+                                    <input id="vue-checkbox" type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
+
+                                </td>
                                 <th
                                     scope="row"
                                     class="flex items-center px-6 py-4 text-gray-900 whitespace-nowrap dark:text-white"
