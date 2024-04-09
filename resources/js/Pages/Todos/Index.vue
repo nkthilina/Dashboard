@@ -101,10 +101,10 @@ const props = defineProps({
                                         class="w-10 h-10 rounded"
                                     />
                                 </td>
-                                <td class="px-6 py-4">{{ todo.age }}</td>
+                                <td class="px-6 py-4 dark:text-white">{{ todo.age }}</td>
                                 <td class="px-6 py-4">
                                     <span
-                                        class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800"
+                                        class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800 mr-2"
                                         >Active</span
                                     >
                                     <span
